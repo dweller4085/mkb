@@ -1,7 +1,7 @@
 #ifndef __mkb_stack_allocator__
 #define __mkb_stack_allocator__
 
-#include "base.hh"
+#include "../base.hh"
 
 struct t_stack_allocator {
     

@@ -1,7 +1,7 @@
 #ifndef __mkb_stack__
 #define __mkb_stack__
 
-#include "base.hh"
+#include "../base.hh"
 
 template<typename t_> struct t_stack {
     static function create(t_slice<> memory) -> t_stack;    

@@ -1,7 +1,7 @@
 #ifndef __mkb_arena__
 #define __mkb_arena__
 
-#include "base.hh"
+#include "../base.hh"
 
 struct t_arena {
     
