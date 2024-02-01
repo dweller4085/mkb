@@ -16,4 +16,29 @@ template<typename t_> struct t_stack {
     mword head;
 };
 
+template<typename t_> inline function t_stack<t_>::create(t_slice<> memory) -> t_stack {
+    return { .memory = memory, .head = 0 };
+}
+
+template<typename t_> inline function t_stack<t_>::init(t_slice<> memory) -> void {
+    self = t_stack::create(memory);
+}
+
+template<typename t_> inline function t_stack<t_>::push(t_ * item) -> void {
+    
+}
+
+template<typename t_> inline function t_stack<t_>::pop() -> t_ * {
+    
+}
+
+template<typename t_> inline function t_stack<t_>::top() -> t_ * {
+    
+}
+
+template<typename t_> inline function t_stack<t_>::is_empty() -> bool {
+    return self.head == 0;
+}
+
+
 #endif // __mkb_stack__

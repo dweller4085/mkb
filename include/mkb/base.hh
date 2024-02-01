@@ -112,7 +112,7 @@ typedef double f64, float64;
             return { .ptr = cstr, .len = strlen(cstr) };
         }
         
-        bool operator == (t_str other) { return true; } // todo
+        bool operator == (t_str other) { return self.len == other.len && !strncmp(self.ptr, other.ptr, self.len); }
         operator char * () { return this->ptr; }
         char& operator [] (mword index) { return this->ptr [index]; }
         

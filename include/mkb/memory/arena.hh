@@ -49,11 +49,11 @@ inline function t_arena::clear() -> void {
 }
 
 template<typename t_> function t_arena::alloc_array(mword count) -> t_slice<t_> {
-    return { .ptr = (t_ *) self.zalloc_raw(sizeof(t_) * count, alignof(t_)), .len = count };
+    return { .ptr = (t_ *) self.alloc(sizeof(t_) * count, alignof(t_)), .len = count };
 }
 
 template<typename t_> function t_arena::alloc_object() -> t_ * {
-    return (t_ *) self.zalloc_raw_slice(sizeof(t_), alignof(t_));
+    return (t_ *) self.alloc(sizeof(t_), alignof(t_));
 }
 
 #endif // __mkb_arena__
