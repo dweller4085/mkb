@@ -2,7 +2,6 @@
 #define __mkb_base__
 
 #include <stdint.h>
-#include <string.h>
 #include <assert.h>
 
 #define __mkb_funny__
@@ -82,16 +81,18 @@
 typedef uint8_t  u8,  uint8,  byte;
 typedef uint16_t u16, uint16, word;
 typedef uint32_t u32, uint32, dword, uint;
-typedef uint64_t u64, uint64, qword, mword;
+typedef uint64_t u64, uint64, qword;
 
 typedef int8_t  s8,  int8;
 typedef int16_t s16, int16;
-typedef int32_t s32, int32, b32, bool32;;
+typedef int32_t s32, int32, b32, bool32;
 typedef int64_t s64, int64;
 
 typedef float  f32, float32;
 typedef double f64, float64;
 
+typedef s64 int_ptr;
+typedef u64 uint_ptr;
 
 
 
@@ -99,25 +100,9 @@ typedef double f64, float64;
 
     template <typename t_ = byte> struct t_slice {
         operator t_ * () { return this->ptr; }
-        t_& operator [] (mword index) { return this->ptr [index]; }
+        t_& operator [] (u64 index) { return this->ptr [index]; }
         t_ * ptr;
-        mword len;
-    };
-
-    using t_str = t_slice<char>;
-
-    template<> struct t_slice<char> {
-        
-        static function from_cstr(char * cstr) -> t_str {
-            return { .ptr = cstr, .len = strlen(cstr) };
-        }
-        
-        bool operator == (t_str other) { return self.len == other.len && !strncmp(self.ptr, other.ptr, self.len); }
-        operator char * () { return this->ptr; }
-        char& operator [] (mword index) { return this->ptr [index]; }
-        
-        char * ptr;
-        mword len;
+        u64 len;
     };
 
 #endif // __mkb_cc__

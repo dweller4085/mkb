@@ -4,9 +4,7 @@
 #include "../base.hh"
 
 struct t_stack_allocator {
-    
     static constexpr void * memory_exhausted = (void *) (0);
-    
     static function create(t_slice<> memory) -> t_stack_allocator;
     
     function init(t_slice<> memory) -> void;
@@ -19,7 +17,6 @@ struct t_stack_allocator {
     t_slice<> memory;
     dword frame;
     dword head;
-    
 };
 
 inline function t_stack_allocator::create(t_slice<> memory) -> t_stack_allocator {
@@ -50,7 +47,7 @@ inline function t_stack_allocator::push_as_slice(dword size, dword align) -> t_s
 }
 
 inline function t_stack_allocator::push_remainder() -> t_slice<> {
-    // todo this does not work, because the header dword takes up space and adds padding
+    // fixme this does not work, because the header dword takes up space and adds padding
     return self.push_as_slice(self.memory.len - self.head, 1);
 }
 
