@@ -19,11 +19,4 @@ template<> struct t_slice<char> {
     u64 len;
 };
 
-struct t_string {
-    
-    t_dyn_allocator * allocator // ?
-    t_str str;
-};
-
-
 #endif // __mkb_string__

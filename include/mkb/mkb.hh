@@ -1,7 +1,7 @@
 #ifndef __mkb__
 #define __mkb__
 
-// copy pase sal to mkb? 
+// copy paste sal to mkb? 
 
 #include "base.hh"
 #include "memory/arena.hh"
