@@ -73,7 +73,7 @@
 
 
 // todo do something better here?
-#define m_debug_assert(condition) (assert(condition))
+#define m_assert(condition) (assert(condition))
 #define m_die(message, exit_code) ((void) 0)
 
 
