@@ -35,7 +35,6 @@
 #endif
 
 #ifdef __mkb_cc__
-
     #ifdef __mkb_funny__
     
         #define function auto
@@ -45,15 +44,12 @@
     #endif
     
     #define null nullptr
-
 #endif
 
 #ifdef  __mkb_c__
-
     #define null ((void *) 0)
     #define true 1
     #define false 0
-    
 #endif
 
 
@@ -97,14 +93,12 @@ typedef u64 uint_ptr;
 
 
 #ifdef __mkb_cc__
-
     template <typename t_ = byte> struct t_slice {
         operator t_ * () { return this->ptr; }
         t_& operator [] (u64 index) { return this->ptr [index]; }
         t_ * ptr;
         u64 len;
     };
-
 #endif // __mkb_cc__
 
 #endif // __mkb_base__
