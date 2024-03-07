@@ -28,8 +28,8 @@ inline function t_arena::init(t_slice<> memory) -> void {
 }
 
 inline function t_arena::alloc(dword size, dword align) -> void * {
-    let padding = m_distance_forward_to_align((dword) self.memory.ptr + self.head, align);
-    m_debug_assert(self.head + size + padding <= self.memory.len);
+    let padding = m_distance_forward_to_align((uint_ptr) self.memory.ptr + self.head, align);
+    m_assert(self.head + size + padding <= self.memory.len);
     
     let memory = self.memory.ptr + self.head + padding;
     self.head += size + padding;
