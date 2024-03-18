@@ -94,8 +94,12 @@ typedef u64 uint_ptr;
 
 #ifdef __mkb_cc__
     template <typename t_ = byte> struct t_slice {
+        u64 length() { return len; }
+        t_ * at(u64 index) { return ptr + index; }
+        
         operator t_ * () { return this->ptr; }
         t_& operator [] (u64 index) { return this->ptr [index]; }
+        
         t_ * ptr;
         u64 len;
     };
