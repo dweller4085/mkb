@@ -36,7 +36,6 @@
 #endif
 
 #ifdef __mkb_cc__
-
     #ifdef __mkb_funny__
     
         #define function auto
@@ -46,15 +45,12 @@
     #endif
     
     #define null nullptr
-
 #endif
 
 #ifdef  __mkb_c__
-
     #define null ((void *) 0)
     #define true 1
     #define false 0
-    
 #endif
 
 
@@ -99,10 +95,13 @@ typedef s32 b32, bool32;
 
 
 #ifdef __mkb_cc__
-
     template <typename t_ = byte> struct t_slice {
+        u64 length() { return len; }
+        t_ * at(u64 index) { return ptr + index; }
+        
         operator t_ * () { return this->ptr; }
         t_& operator [] (u64 index) { return this->ptr [index]; }
+        
         t_ * ptr;
         u64 len;
     };

@@ -28,8 +28,8 @@ inline function t_stack_allocator::init(t_slice<> memory) -> void {
 }
 
 inline function t_stack_allocator::push(dword size, dword align) -> void * {
-    let header_padding = m_distance_forward_to_align((qword) self.memory.ptr + self.head, alignof(dword));
-    let data_padding = m_distance_forward_to_align((qword) self.memory.ptr + self.head + header_padding + sizeof(dword), align);
+    let header_padding = m_distance_forward_to_align((uint_ptr) self.memory.ptr + self.head, alignof(dword));
+    let data_padding = m_distance_forward_to_align((uint_ptr) self.memory.ptr + self.head + header_padding + sizeof(dword), align);
     
     m_assert(header_padding + sizeof(dword) + data_padding + size <= self.memory.len);
     
