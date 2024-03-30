@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <assert.h>
+#include <string.h>
 
 #define __mkb_funny__
 
@@ -85,7 +86,7 @@ typedef uint64_t u64, uint64, qword;
 
 typedef int8_t  s8,  int8;
 typedef int16_t s16, int16;
-typedef int32_t s32, int32, b32, bool32;
+typedef int32_t s32, int32;
 typedef int64_t s64, int64;
 
 typedef float  f32, float32;
@@ -94,6 +95,7 @@ typedef double f64, float64;
 typedef s64 int_ptr;
 typedef u64 uint_ptr;
 
+typedef s32 b32, bool32;
 
 
 #ifdef __mkb_cc__
@@ -102,6 +104,19 @@ typedef u64 uint_ptr;
         operator t_ * () { return this->ptr; }
         t_& operator [] (u64 index) { return this->ptr [index]; }
         t_ * ptr;
+        u64 len;
+    };
+    
+    using t_str = t_slice<char>;
+    
+    template<> struct t_slice<char> {
+        static function from_cstr(char * cstr) -> t_str { return { .ptr = cstr, .len = strlen(cstr) }; }
+        
+        char& operator [] (u64 index) { return this->ptr [index]; }
+        bool operator == (t_str other) { return self.len == other.len && !strncmp(self.ptr, other.ptr, self.len); }
+        operator char * () { return this->ptr; }
+        
+        char * ptr;
         u64 len;
     };
 
