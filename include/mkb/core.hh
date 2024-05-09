@@ -15,6 +15,7 @@
 #define function auto
 #define let auto
 #define self (* this)
+#define null nullptr
 
 
 #define m_pow2_modulo(x, a) ((x) & ((a) - 1))

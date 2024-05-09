@@ -1,7 +1,7 @@
 #ifndef __mkb_arena__
 #define __mkb_arena__
 
-#include "../base.hh"
+#include "../core.hh"
 
 // [mkb] (30 apr '24) make a 'bound' arena, that is bound to some allocator?
 // [mkb] (30 apr '24) and also make a generic allocator interface I guess?
@@ -52,11 +52,11 @@ inline function t_arena::clear() -> void {
 }
 
 template<typename t_> function t_arena::alloc_array(u32 count) -> t_slice<t_> {
-    return { .ptr = (t_ *) self.alloc(sizeof(t_) * count, alignof(t_)), .len = count };
+    return { .ptr = (t_ *) self.alloc_zeroed(sizeof(t_) * count, alignof(t_)), .len = count };
 }
 
 template<typename t_> function t_arena::alloc_object() -> t_ * {
-    return (t_ *) self.alloc(sizeof(t_), alignof(t_));
+    return (t_ *) self.alloc_zeroed(sizeof(t_), alignof(t_));
 }
 
 #endif // __mkb_arena__
