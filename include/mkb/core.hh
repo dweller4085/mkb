@@ -18,6 +18,11 @@
 #define null nullptr
 
 
+#define __in__
+#define __out__
+#define __inout__
+
+
 #define m_pow2_modulo(x, a) ((x) & ((a) - 1))
 #define m_is_aligned(x, a) (m_pow2_modulo((x), (a)) == 0)
 #define m_is_power_of_two(x) (m_pow2_modulo((x), (x)) == 0)
@@ -33,6 +38,9 @@
 
 #define m_idiv_ceil(a, b) (((a) - 1) / (b) + 1)
 #define m_idiv_floor(a, b) ((a) / (b))
+
+#define m_max(a, b) ((a) > (b) ? (a) : (b))
+#define m_min(a, b) ((a) < (b) ? (a) : (b))
 
 #define m_assert(condition) (assert(condition))
 
