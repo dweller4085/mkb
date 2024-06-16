@@ -1,10 +1,11 @@
-#ifndef __mkb_base__
-#define __mkb_base__
+#ifndef __mkb_core__
+#define __mkb_core__
 
 #include <stdint.h>
 #include <assert.h>
 #include <string.h>
 #include <stdlib.h>
+#include <float.h>
 
 
 #ifdef _DEBUG
@@ -64,6 +65,31 @@ typedef uint64_t uint_ptr;
 typedef int32_t b32, bool32;
 
 
+constexpr u8 u8_max = 255;
+constexpr u8 u8_min = 0;
+constexpr u16 u16_max = 65535;
+constexpr u16 u16_min = 0;
+constexpr u32 u32_max = 4294967295;
+constexpr u32 u32_min = 0;
+constexpr u64 u64_max = 18446744073709551615;
+constexpr u64 u64_min = 0;
+
+constexpr s8 s8_max = +127;
+constexpr s8 s8_min = -128;
+constexpr s16 s16_max = +32767;
+constexpr s16 s16_min = -32768;
+constexpr s32 s32_max = +2147483647;
+constexpr s32 s32_min = -2147483648;
+constexpr s64 s64_max = +9223372036854775807;
+constexpr s64 s64_min = -9223372036854775808;
+
+
+constexpr f32 f32_epsilon = FLT_EPSILON;
+constexpr f32 f32_max = FLT_MAX;
+constexpr f64 f64_epsilon = DBL_EPSILON;
+constexpr f64 f64_max = DBL_MAX;
+
+
 template <typename t_ = u8> struct t_slice {
     u64 length() { return len; }
     t_ * at(u64 index) { return ptr + index; }
@@ -88,4 +114,4 @@ template<> struct t_slice<char> {
 
 using t_str = t_slice<char>;
 
-#endif // __mkb_base__
+#endif // __mkb_core__
